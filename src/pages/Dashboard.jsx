@@ -53,7 +53,7 @@ export default function Dashboard() {
       </div>
 
       {/* Accesos rápidos */}
-      <div className="card-grid card-grid--3" style={{ marginBottom: 24 }}>
+      <div className="card-grid card-grid--3" style={{ marginBottom: 24, textDecoration: "none"}}>
         {[
           { path: "/cotizaciones", label: "Nueva Cotización", icon: "➕", desc: "Crear cotización para un cliente" },
           { path: "/clientes", label: "Agregar Cliente", icon: "👤", desc: "Registrar nuevo cliente" },
@@ -63,7 +63,7 @@ export default function Dashboard() {
             key={item.path}
             to={item.path}
             className="card"
-            style={{ textDecoration: "none", display: "block", cursor: "pointer", transition: "border-color 0.15s" }}
+            style={{ textDecoration: "none", display: "block", cursor: "pointer", transition: "border-color 0.15s", color: "inherit" }}
             onMouseOver={e => e.currentTarget.style.borderColor = "var(--accent)"}
             onMouseOut={e => e.currentTarget.style.borderColor = "var(--border)"}
           >
