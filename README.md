@@ -1,18 +1,36 @@
-# React + Vite
+# 📄 Sistema de Cotizaciones
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+App web para gestión de cotizaciones, clientes, productos y servicios.
 
-Currently, two official plugins are available:
+## 🧩 Módulos completados
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [x] Setup inicial (Vite + React)
+- [x] AppContext con useReducer (estado global)
+- [x] Persistencia en localStorage (auto-guardado)
+- [x] React Router con 6 rutas
+- [x] Layout con sidebar colapsable
+- [x] Dashboard con estadísticas resumen
+- [x] Utilidades de cálculo (subtotales, IVA, descuentos)
+- [x] Módulo Clientes — CRUD completo con búsqueda y modal
+- [x] Módulo Productos — CRUD con SKU, unidades, stock
+- [x] Módulo Servicios — CRUD con tipo fijo/hora
+- [x] Módulo Cotizaciones — Formulario completo, ítems de catálogo o manuales, cálculo automático, cambio de estatus
+- [x] Generación de PDFs — jsPDF con diseño profesional (logo, header, tabla, totales, footer)
+- [x] Estadísticas — KPIs, barras por mes, línea de monto, pie de estatus, top clientes y conceptos
 
-## React Compiler
+## 🔑 Acciones disponibles en AppContext
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+```js
+import { useApp, ACTIONS } from "./context/AppContext";
 
-Note: This will impact Vite dev & build performances.
+const { state, dispatch } = useApp();
 
-## Expanding the ESLint configuration
+// Agregar cliente
+dispatch({ type: ACTIONS.ADD_CLIENTE, payload: { id, nombre, rfc, ... } });
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+// Actualizar producto
+dispatch({ type: ACTIONS.UPDATE_PRODUCTO, payload: { id, nombre, precio, ... } });
+
+// Eliminar cotización
+dispatch({ type: ACTIONS.DELETE_COTIZACION, payload: cotizacionId });
+```
